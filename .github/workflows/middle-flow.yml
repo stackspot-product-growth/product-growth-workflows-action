@@ -1,6 +1,6 @@
 name: Middle Flow
 run-name: ${{ inputs.workflow_name }}
-on: 
+on:
   workflow_call:
     inputs:
       correlation_id:
@@ -61,22 +61,22 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: ${{ fromJson(inputs.config).origin_repository }}
-          ref: ${{ fromJson(inputs.config).origin_branch }}   
+          ref: ${{ fromJson(inputs.config).origin_branch }}
           token: ${{ fromJson(secrets.secrets).scm_token }}
 
       - name: Cache
         uses: ./github-actions/restore-stk-cache
-        with: 
+        with:
           stk: ${{ env.STK }}
 
       - name: Install STK
         uses: ./github-actions/install-stk-cli
-        with: 
+        with:
           stk: ${{ env.STK }}
 
       - name: Login ${{ fromJson(inputs.api_inputs).cli_login_email }}
         uses: ./github-actions/login-stk
-        with: 
+        with:
           stk: ${{ env.STK }}
           email: ${{ fromJson(inputs.api_inputs).cli_login_email }}
           pat: ${{ fromJson(secrets.secrets).cli_token }}
@@ -95,7 +95,7 @@ jobs:
   apply:
     if: ${{ inputs.workflow_name == 'apply-plugin' }}
     needs: use-workspace
-    uses: stack-spot/stackspot-workflows-action/.github/workflows/apply-plugin.yml@main
+    uses: stackspot-product-growth/product-growth-workflows-action/.github/workflows/apply-plugin.yml@main
     with:
       api_inputs: ${{ inputs.api_inputs }}
       config: ${{ inputs.config }}
@@ -105,7 +105,7 @@ jobs:
   create:
     if: ${{ inputs.workflow_name == 'create' }}
     needs: use-workspace
-    uses: stack-spot/stackspot-workflows-action/.github/workflows/create.yml@main
+    uses: stackspot-product-growth/product-growth-workflows-action/.github/workflows/create.yml@main
     with:
       api_inputs: ${{ inputs.api_inputs }}
       config: ${{ inputs.config }}
@@ -115,7 +115,7 @@ jobs:
   run:
     if: ${{ inputs.workflow_name == 'run-action' }}
     needs: use-workspace
-    uses: stack-spot/stackspot-workflows-action/.github/workflows/run-action.yml@main
+    uses: stackspot-product-growth/product-growth-workflows-action/.github/workflows/run-action.yml@main
     with:
       api_inputs: ${{ inputs.api_inputs }}
       config: ${{ inputs.config }}

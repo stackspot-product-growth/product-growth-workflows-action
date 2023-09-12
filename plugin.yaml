@@ -14,7 +14,7 @@ spec:
   implementation: docs/implementation.md
   release-notes: docs/release-notes-0.0.1.md
   requirements: docs/requirements.md
-  repository: https://github.com/stack-spot/stackspot-workflows-action
+  repository: https://github.com/stackspot-product-growth/product-growth-workflows-action
   technologies: # Ref: https://docs.stackspot.com/docs/create-stacks/yaml-files/yaml/#technologies
     - Api
   inputs:

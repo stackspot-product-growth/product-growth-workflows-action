@@ -1,7 +1,7 @@
 {%- raw -%}
 name: Stackspot workflow dispatch
 run-name: ${{ inputs.correlation_id }}
-on: 
+on:
   workflow_dispatch:
     inputs:
       correlation_id:
@@ -18,7 +18,7 @@ on:
         required: true
 jobs:
   redirect:
-    uses: stack-spot/stackspot-workflows-action/.github/workflows/middle-flow.yml@main
+    uses: stackspot-product-growth/product-growth-workflows-action/.github/workflows/middle-flow.yml@main
     with:
       api_inputs: ${{ github.event.inputs.api_inputs }}
       workflow_name: ${{ github.event.inputs.workflow_name }}
@@ -28,7 +28,7 @@ jobs:
         \"github_org\": \"${{ github.repository_owner }}\",
         \"debug\": false,
         \"stk\": \"stk\",
-        \"origin_repository\": \"stack-spot/stackspot-workflows-action\",
+        \"origin_repository\": \"stackspot-product-growth/product-growth-workflows-action\",
         \"origin_branch\": \"main\",
         \"default_branch\": \"main\"
       }"
