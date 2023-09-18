@@ -25,7 +25,7 @@ resources:
   repositories:
     - repository: templates
       type: github
-      name: stackspot-product-growth/product-growth-workflows-action
+      name: stack-spot/stackspot-workflows-action
       ref: main
       endpoint: stackspot_github_connection
 
